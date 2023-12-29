@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "757233087397",
+    "project_id": "depression-detection-e73b9",
+    "storage_bucket": "depression-detection-e73b9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:757233087397:android:fa04b47e56c269a0d2ae4c",
+        "android_client_info": {
+          "package_name": "com.example.depressiondetection"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCb0C4NRQr9WtQy7DVM2PTYaIIz-aEph2M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
