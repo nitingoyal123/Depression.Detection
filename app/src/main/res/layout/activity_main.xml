@@ -4,114 +4,127 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:id="@+id/txtQuestion"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Question 1"
-            android:textSize="29sp"
-            android:textStyle="bold"/>
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="10dp">
-
-            <RadioGroup
-                android:id="@+id/radioGroupsOptions"
+            <TextView
+                android:id="@+id/txtQuestion"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="50dp"
+                android:gravity="center"
+                android:text="Question 1"
+                android:textSize="29sp"
+                android:textStyle="bold" />
 
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="31sp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="Not at all"
-                    android:id="@+id/radioButtonOpt1"/>
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="31sp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="Several days"
-                    android:id="@+id/radioButtonOpt2"/>
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="31sp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="More than half the days"
-                    android:id="@+id/radioButtonOpt3"/>
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="31sp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="Nearly everyday"
-                    android:id="@+id/radioButtonOpt4"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp">
 
-            </RadioGroup>
+                <RadioGroup
+                    android:id="@+id/radioGroupsOptions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-        </androidx.cardview.widget.CardView>
+                    <RadioButton
+                        android:background="@drawable/options_background"
+                        android:padding="5dp"
+                        android:id="@+id/radioButtonOpt1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="Not at all"
+                        android:textSize="30sp"  />
 
+                    <RadioButton
+                        android:background="@drawable/options_background"
+                        android:padding="5dp"
+                        android:id="@+id/radioButtonOpt2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="Several days"
+                        android:textSize="30sp" />
+
+                    <RadioButton
+                        android:background="@drawable/options_background"
+                        android:padding="5dp"
+                        android:id="@+id/radioButtonOpt3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="More than half the days"
+                        android:textSize="30sp"  />
+
+                    <RadioButton
+                        android:background="@drawable/options_background"
+                        android:padding="5dp"
+                        android:id="@+id/radioButtonOpt4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:text="Nearly everyday"
+                        android:textSize="30sp" />
+
+                </RadioGroup>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:weightSum="2"
-            android:orientation="horizontal">
-
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
 
             <Button
-                android:onClick="btnPrevious"
                 android:id="@+id/btnPrevious"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:textSize="27sp"
-                android:textAllCaps="false"
-                android:visibility="invisible"
+                android:onClick="btnPrevious"
                 android:text="Previous"
-                android:layout_margin="10dp"/>
+                android:textAllCaps="false"
+                android:textSize="27sp"
+                android:visibility="invisible" />
+
             <Button
-                android:onClick="btnNext"
                 android:id="@+id/btnNext"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:textSize="27sp"
-                android:textAllCaps="false"
+                android:onClick="btnNext"
                 android:text="Next"
-                android:layout_margin="10dp"/>
+                android:textAllCaps="false"
+                android:textSize="27sp" />
 
         </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    </LinearLayout>
 </layout>
