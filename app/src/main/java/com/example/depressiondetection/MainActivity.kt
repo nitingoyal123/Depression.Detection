@@ -38,16 +38,6 @@ class MainActivity : ComponentActivity() {
         binding = DataBindingUtil.setContentView(this@MainActivity,R.layout.activity_main)
         databaseReference = FirebaseDatabase.getInstance().getReference(OBJ_QUESTIONS)
 
-        databaseReference.child("Ques1").setValue("Little interest or pleasure in doing things ?")
-        databaseReference.child("Ques2").setValue("Feeling down, depressed, or hopeless ?")
-        databaseReference.child("Ques3").setValue("Trouble falling or staying asleep, or sleeping too much ?")
-        databaseReference.child("Ques4").setValue("Feeling tired or having little energy ?")
-        databaseReference.child("Ques5").setValue("Poor appetite or overeating ?")
-        databaseReference.child("Ques6").setValue("Feeling bad about yourself or that you are a failure or have let yourself or your family down ?")
-        databaseReference.child("Ques7").setValue("Trouble concentrating on things, such as reading the newspaper or watching television ?")
-        databaseReference.child("Ques8").setValue("Moving or speaking so slowly that other people could have noticed. Or the opposite being so figety or restless that you have been moving around a lot more than usual ?")
-        databaseReference.child("Ques9").setValue("Thoughts that you would be better off dead, or of hurting yourself ?")
-
     }
 
     private fun putQuestion(key : String,value: String) {

@@ -63,8 +63,8 @@ class PatientDetailsActivity : AppCompatActivity() {
                         "address" to address
                     )
 
-                    db.collection("PatientDetails")
-                        .add(details)
+                    var doc = db.collection("PatientDetails").document(name)
+                    doc.set(details)
                         .addOnSuccessListener {
                             Toast.makeText(this@PatientDetailsActivity,"Record successfully added !!!",Toast.LENGTH_SHORT).show()
                             val intent = Intent(this@PatientDetailsActivity,MainActivity::class.java)
