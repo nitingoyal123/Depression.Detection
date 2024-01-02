@@ -14,14 +14,19 @@ import com.google.firebase.database.ValueEventListener
 
 class SubjectiveQuestions : AppCompatActivity() {
 
+
     var PATIENT_INFO = "PatientInfo"
     var OBJ_QUESTIONS = "ObjectiveQuestions"
-    var patientInfo = intent.getSerializableExtra(PATIENT_INFO,ScoreDetails::class.java)!!
+    var patientInfo = intent.getSerializableExtra(PATIENT_INFO,PatientDetails::class.java)!!
     var SCORE = patientInfo.score
     var NAME = patientInfo.name
+    var AGE = patientInfo.age
     var PHONE_NUMBER = patientInfo.phoneNumber
+    var EMAIL = patientInfo.email
+    var ADDRESS = patientInfo.address
     var DEPRESSION_LEVEL_OBJECTIVE = patientInfo.depressionLevelObjective
     var DEPRESSION_LEVEL_SUBJECTIVE = patientInfo.depressionLevelSubjective
+
 
     private lateinit var databaseReference : DatabaseReference
     var SUB_QUESTIONS = "SubjectiveQuestions"
@@ -37,6 +42,7 @@ class SubjectiveQuestions : AppCompatActivity() {
         databaseReference = FirebaseDatabase.getInstance().getReference(SUB_QUESTIONS)
 
 
+
         showQuestions()
 
     }
@@ -47,9 +53,9 @@ class SubjectiveQuestions : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (question in snapshot.children) {
                     Questions.add(question.value.toString())
-                    if (QUESTION_NUMBER in 1..TOTAL_QUESTIONS) {
-                        binding.txtQuestion.text = Questions[QUESTION_NUMBER-1]
-                    }
+                }
+                if (QUESTION_NUMBER in 1..TOTAL_QUESTIONS) {
+                    binding.txtQuestion.text = Questions[QUESTION_NUMBER-1]
                 }
             }
             override fun onCancelled(error: DatabaseError) {
@@ -62,6 +68,8 @@ class SubjectiveQuestions : AppCompatActivity() {
         super.onStart()
         if (QUESTION_NUMBER == TOTAL_QUESTIONS) {
             binding.btnSubmit.text = "Submit"
+        } else {
+            binding.btnSubmit.text = "Next"
         }
     }
 }

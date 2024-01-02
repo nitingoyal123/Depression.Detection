@@ -22,11 +22,16 @@ class MainActivity : ComponentActivity() {
     private lateinit var databaseReference : DatabaseReference
     var PATIENT_INFO = "PatientInfo"
     var OBJ_QUESTIONS = "ObjectiveQuestions"
-    lateinit var patientInfo : ScoreDetails
+    lateinit var patientInfo : PatientDetails
     var SCORE = 0
     lateinit var NAME : String
+    lateinit var AGE : String
     lateinit var PHONE_NUMBER : String
+    lateinit var EMAIL : String
+    lateinit var ADDRESS : String
     lateinit var DEPRESSION_LEVEL_OBJECTIVE : String
+    var DEPRESSION_LEVEL_SUBJECTIVE : String = ""
+    private lateinit var DATE : String
     private var QUESTION_NUMBER = 1
     private var TOTAL_QUESTIONS = 9
     private var Questions = ArrayList<String>()
@@ -113,7 +118,7 @@ class MainActivity : ComponentActivity() {
                     val intent = Intent(this@MainActivity,SubjectiveQuestions::class.java)
 
                     //PASSING SCORE TO NEXT ACTIVITY
-                    intent.putExtra(PATIENT_INFO,ScoreDetails(NAME,PHONE_NUMBER,SCORE,DEPRESSION_LEVEL_OBJECTIVE,""))
+                    intent.putExtra(PATIENT_INFO,PatientDetails(NAME,AGE,PHONE_NUMBER,EMAIL,ADDRESS,DATE,SCORE,DEPRESSION_LEVEL_OBJECTIVE,DEPRESSION_LEVEL_SUBJECTIVE))
                     startActivity(intent)
                     Toast.makeText(this@MainActivity,DEPRESSION_LEVEL_OBJECTIVE,Toast.LENGTH_SHORT).show()
 
@@ -148,11 +153,16 @@ class MainActivity : ComponentActivity() {
         }
         showQuestion()
 
-        patientInfo = intent.getSerializableExtra(PATIENT_INFO,ScoreDetails::class.java)!!
+        patientInfo = intent.getSerializableExtra(PATIENT_INFO,PatientDetails::class.java)!!
         SCORE = patientInfo.score
         NAME = patientInfo.name
+        AGE = patientInfo.age
         PHONE_NUMBER = patientInfo.phoneNumber
+        EMAIL = patientInfo.email
+        ADDRESS = patientInfo.address
+        DATE = patientInfo.date
         DEPRESSION_LEVEL_OBJECTIVE = patientInfo.depressionLevelObjective
+        DEPRESSION_LEVEL_SUBJECTIVE = patientInfo.depressionLevelSubjective
 
     }
 }

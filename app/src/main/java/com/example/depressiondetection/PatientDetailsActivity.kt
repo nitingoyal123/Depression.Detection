@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.depressiondetection.databinding.ActivityPatientDetailsBinding
 import com.google.firebase.database.ktx.database
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreKtxRegistrar
 import com.google.firebase.firestore.ktx.firestore
@@ -33,6 +34,7 @@ class PatientDetailsActivity : AppCompatActivity() {
                 var phoneNumber = edtPhoneNumber.text.toString().trim()
                 var email = edtEmail.text.toString().trim()
                 var address = edtAddress.text.toString().trim()
+                var dateAndTime = FieldValue.serverTimestamp().toString()
                 if (TextUtils.isEmpty(name)) {
                     edtName.setBackgroundColor(resources.getColor(R.color.purple_200))
                 } else {
@@ -60,7 +62,8 @@ class PatientDetailsActivity : AppCompatActivity() {
                         "age" to age,
                         "phoneNumber" to phoneNumber,
                         "email" to email,
-                        "address" to address
+                        "address" to address,
+                        "timeAndDate" to dateAndTime
                     )
 
                     var doc = db.collection("PatientDetails").document(name)
@@ -68,7 +71,7 @@ class PatientDetailsActivity : AppCompatActivity() {
                         .addOnSuccessListener {
                             Toast.makeText(this@PatientDetailsActivity,"Record successfully added !!!",Toast.LENGTH_SHORT).show()
                             val intent = Intent(this@PatientDetailsActivity,MainActivity::class.java)
-                            intent.putExtra(PATIENT_INFO,ScoreDetails(name,phoneNumber,0,"Minimal Depression","Minimal Depression"))
+                            intent.putExtra(PATIENT_INFO,PatientDetails(name,age,phoneNumber,email,address,dateAndTime,0,"",""))
                             startActivity(intent)
                             finish()
                         }.addOnFailureListener {

@@ -32,7 +32,9 @@ class StaffLoginActivity : AppCompatActivity() {
         var correctPassword = sharedPreferences.getString(email,null)
         if (correctPassword.equals(password)) {
             Toast.makeText(this@StaffLoginActivity,"Logged In Successfully !!",Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this@StaffLoginActivity,NavigateToInfoActivity::class.java))
+            startActivity(Intent(this@StaffLoginActivity,PatientListActivity::class.java))
+        } else {
+            Toast.makeText(this@StaffLoginActivity,"Incorrect Password !!",Toast.LENGTH_SHORT).show()
         }
 
 
